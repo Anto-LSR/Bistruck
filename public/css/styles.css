@@ -15,7 +15,7 @@
 
 
 header{
-  height: 100vh;
+  min-height: 100vh;
 }
 
 section{
@@ -31,9 +31,7 @@ section{
   border-radius: 80px;
 }
 
-#portfolio{
-  height: 100vh;
-}
+
 
 #ouvert{
   color: #80a76e;
@@ -3010,7 +3008,7 @@ textarea.form-control-lg {
 .btn-primary {
   color: #fff;
   background-color: #b84045;
-  border-color: #80a76e;
+  border-color: #b84045;
 }
 .btn-primary:hover {
   color: #fff;
