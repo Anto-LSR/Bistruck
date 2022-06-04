@@ -1,0 +1,179 @@
+{% extends 'adminPanel.html.twig' %}
+
+{% block body %}
+
+
+
+    <div class="accordion m-2" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button bg-dark" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    Carte actuelle
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                <div class="bg-dark text-white border-bottom border-5">
+                    <div class="row gx-4 gx-lg-5">
+                        <div class="col-lg-4 col-md-6 text-center">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="fa-solid fa-beer-mug-empty fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2">Alcools</h3>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-dark">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Prix</th>
+                                            <th scope="col">Prix Pinte</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for alcool in listeAlcools %}
+                                            <tr>
+                                                <td>{{ alcool.libelle }}</td>
+                                                <td>{{ alcool.prix ~" €" }}</td>
+                                                {% if alcool.prixPinte is not null %}
+                                                    <td>{{ alcool.prixPinte ~" €" }}</td>
+                                                {% else %}
+                                                    <td></td>
+                                                {% endif %}
+                                                <td>
+                                                    <a href="{{ path('app_adminPanel_deleteAlcool', {id: alcool.id}) }}"><i
+                                                                class="fa-solid fa-trash-can"></i></a></td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 text-center">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="fa-solid fa-glass-water fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2">Sans Alcool</h3>
+                                <table class="table table-striped table-dark">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">Prix</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for soft in listeSofts %}
+                                        <tr>
+                                            <td>{{ soft.libelle }}</td>
+                                            <td>{{ soft.prix ~" €" }}</td>
+                                            <td>
+                                                <a href="{{ path('app_adminPanel_deleteSoft', {id: soft.id}) }}"><i
+                                                            class="fa-solid fa-trash-can"></i></a></td>
+
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 text-center">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="fa-solid fa-pizza-slice fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2">Plats</h3>
+                                <table class="table table-striped table-dark">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">Tarif</th>
+                                        <th scope="col">Végétarien</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for plat in listePlats %}
+                                        <tr>
+                                            <td>{{ plat.libelle }}</td>
+                                            <td>{{ plat.prix~ "€" }}</td>
+                                            <td>{% if plat.isVegetarien is not null %}✔{% endif %}</td>
+                                            <td>
+                                                <a href="{{ path('app_adminPanel_deletePlat', {id: plat.id}) }}"><i
+                                                            class="fa-solid fa-trash-can"></i></a></td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#        ---------------------------------------------------ACCORDION ITEMS------------------------------------------------- -#}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Ajouter un alcool
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                <div class="accordion-body bg-dark text-white">
+
+                    {{ form(alcoolForm) }}                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Ajouter un soft
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+                <div class="accordion-body bg-dark text-white">
+                    {{ form(softForm) }}
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Ajouter un plat
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+                <div class="accordion-body bg-dark text-white">
+                    {{ form(platForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let url = new URL(window.location);
+        let params = url.searchParams.get("panel");
+        console.log(params)
+
+        if (params == "alcool") {
+            document.getElementById('collapseTwo').classList.add('show')
+
+        }
+        if (params == "soft") {
+            document.getElementById('collapseThree').classList.add('show')
+
+
+        }
+        if (params == "plat") {
+            document.getElementById('collapseFour').classList.add('show')
+
+
+        }
+
+    </script>
+
+{% endblock %}

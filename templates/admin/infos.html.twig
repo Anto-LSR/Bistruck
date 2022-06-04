@@ -1,0 +1,35 @@
+{% extends 'adminPanel.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="card bg-dark">
+            <div class="card-body text-white">
+
+
+                <div class="text-white">
+                    <h3>Edition de la section info</h3>
+                    <p>C'est ici que vous pouvez éditer la deuxième section du site avec le titre la description et une
+                        image.
+                        <br>
+
+                    </p>
+                    <div class="alert-primary alert">La photo n'est pas obligatoire, si elle n'est pas renseignée
+                        l'ancienne restera en place.
+                    </div>
+                </div>
+                {{ form(infosForm) }}
+            </div>
+
+        </div>
+
+    </div>
+    <div class="imageActuelle w-100 p-5 bg-dark mt-5">
+        <h3 class="text-white">Image actuellement sur le site : </h3>
+        <div class="w-100 d-flex justify-content-center">
+            <img src="{{ asset('uploads/images/' ~ infos.lienImage) }}" alt=""
+                 class="w-50 border-white border border-3 rounded-3">
+        </div>
+    </div>
+
+
+{% endblock %}

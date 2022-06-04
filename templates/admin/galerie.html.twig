@@ -1,0 +1,16 @@
+{% extends 'adminPanel.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="card bg-dark">
+            <div class="card-body text-white">
+                {{ form(galerieForm) }}
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+{# <img class="img-fluid" src="{{ asset('uploads/galerie/' ~image.lienImage, ) }}" #}
+{#     alt="{{ image.description }}"/> #}

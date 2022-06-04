@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
     <title>Bistruck</title>
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/2d3b7349a5.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
     <!-- Bootstrap Icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+          rel="stylesheet" type="text/css"/>
     <!-- SimpleLightbox plugin CSS-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet"/>
 </head>
 <body id="page-top">
 <!-- Navigation-->
@@ -28,15 +31,19 @@
 
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="#page-top">Rock & Foulk</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item"><a class="nav-link" href="#about">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="#services">Carte</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">Galerie</a></li>
+                <li class="nav-item"><a class="nav-link" href="#galerie">Galerie</a></li>
                 <li class="nav-item"><a class="nav-link" href="#acces">Accès</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact" data-bs-toggle="modal" data-bs-target="#contactModal">Contact </a></li>
-                <li class="nav-item"><a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#horairesModal" > <span id="ouvert"> <strong> Actuellement ouvert </strong></span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact" data-bs-toggle="modal"
+                                        data-bs-target="#contactModal">Contact </a></li>
+                <li class="nav-item"><a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#horairesModal">
+                        <span id="ouvert"> <strong> Actuellement ouvert </strong></span></a></li>
             </ul>
         </div>
     </div>
@@ -50,7 +57,7 @@
                 <h1 class="font-weight-bold">
                     {{ accueil.titre|raw }}
                 </h1>
-                <hr class="divider" />
+                <hr class="divider"/>
             </div>
             <div class="col-lg-8 align-self-baseline">
                 <p class="text-white-75 mb-5">{{ accueil.description |raw }}</p>
@@ -64,67 +71,130 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8 text-center">
-                <h2 class="text-white mt-0">Ouverture le 32 Juin !</h2>
-                <hr class="divider divider-light" />
-                <p class="text-white-75 mb-4">Venez féter l'ouverture avec nous le <span class="blanc gras grand"> 32 Juin à 26h63 ! </span> </p>
+                <h2 class="text-white mt-0">{{ infos.titre }}</h2>
+                <hr class="divider divider-light"/>
+                <p class="text-white-75 mb-4">{{ infos.description }} </p>
                 <div id="info_img_container" class="row gx-4 gx-lg-5 justify-content-center">
-                <img src="{{ asset('assets/img/bistruck-camion.jpg') }}" alt="">
+                    <img src="{{ asset('uploads/images/' ~ infos.lienImage) }}" alt="">
                 </div>
                 <a class="btn btn-light btn-xl mt-5" href="#services">Voir la carte</a>
-                <a class="btn btn-light btn-xl mt-5" href="#services" data-bs-toggle="modal" data-bs-target="#horairesModal">Voir les horaires</a>
+                <a class="btn btn-light btn-xl mt-5" href="#services" data-bs-toggle="modal"
+                   data-bs-target="#horairesModal">Voir les horaires</a>
             </div>
         </div>
     </div>
 </section>
 <!-- Services-->
+
 <section class="page-section" id="services">
     <div class="container px-4 px-lg-5">
         <h2 class="text-center mt-0">Notre carte du moment</h2>
-        <hr class="divider" />
-        <p class="text-white-75 mb-4 text-center">Le meilleur moyen de se détendre tout en<span class="rouge gras grand"> <br> soutenant les producteurs locaux ! 😉 </span> </p>
+        <hr class="divider"/>
+        <p class="text-white-75 mb-4 text-center">Le meilleur moyen de se détendre tout en<span
+                    class="rouge gras grand"> <br> soutenant les producteurs locaux ! 😉 </span></p>
         <div class="row gx-4 gx-lg-5">
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="fa-solid fa-beer-mug-empty fs-1 text-primary"></i></div>
                     <h3 class="h4 mb-2">Bières</h3>
-        <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Demi</th>
-                            <th scope="col">Pinte</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">La Cuvée des trolls | 7.2°</th>
-                            <td>3,30€</td>
-                            <td>6.00€</td>
+                    <div class="table-responsive">
+                        <table class="table ">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prix</th>
+                                <th scope="col">Prix Pinte</th>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                        </tr>
-                        <tr>
-                            <th scope="row">Bière artisanale du coin | 5.2°</th>
-                            <td>2,90€</td>
-                            <td>5.00€</td>
+                            {% if listeBiere|length > 0 %}
+                                <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                    <td><strong>Nos bières</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                {% for biere in listeBiere %}
+                                    <tr>
+                                        <td>{{ biere.libelle }}</td>
+                                        <td>{{ biere.prix }} €</td>
+                                        {% if biere.prixPinte is not null %}
+                                            <td>{{ biere.prixPinte }} €</td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            {#                            ---------------- -#}
+                            {% if listeVin|length > 0 %}
+                                <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                    <td><strong>Nos vins et rosés</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                {% for vin in listeVin %}
+                                    <tr>
+                                        <td>{{ vin.libelle }}</td>
+                                        <td>{{ vin.prix }} €</td>
+                                        {% if vin.prixPinte is not null %}
+                                            <td>{{ vin.prixPinte }} €</td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            {#                            --------------------- -#}
+                            {% if listeSpiritueux|length > 0 %}
+                                <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                    <td><strong>Nos spiritueux</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                {% for alcool in listeSpiritueux %}
+                                    <tr>
+                                        <td>{{ alcool.libelle }}</td>
+                                        <td>{{ alcool.prix }} €</td>
+                                        {% if alcool.prixPinte is not null %}
+                                            <td>{{ alcool.prixPinte }} €</td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            {#                            ----------------- -#}
+                            {% if listeSpiritueux|length > 0 %}
+                                <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                    <td><strong>Nos cidres</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                {% for alcool in listeCidre %}
+                                    <tr>
+                                        <td>{{ alcool.libelle }}</td>
+                                        <td>{{ alcool.prix }} €</td>
+                                        {% if alcool.prixPinte is not null %}
+                                            <td>{{ alcool.prixPinte }} €</td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            {#                            -------------------- -#}
 
-                        </tr>
-                        <tr>
-                            <th scope="row">Desperados (Bouteille)</th>
-                            <td>3.00€</td>
-                            <td></td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-        </div>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="fa-solid fa-glass-water fs-1 text-primary"></i></div>
                     <h3 class="h4 mb-2">Sans Alcool</h3>
-                    <table class="table">
+                    <table class="table ">
                         <thead>
                         <tr>
                             <th scope="col">Nom</th>
@@ -132,23 +202,48 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">Coca-Cola</th>
-                            <td>3,30€</td>
+                        {#                            ----------------- -#}
+                        {% if listeSoda|length > 0 %}
+                            <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                <td><strong>Nos Sodas</strong></td>
+                                <td></td>
 
+                            </tr>
+                            {% for boisson in listeSoda %}
+                                <tr>
+                                    <td>{{ boisson.libelle }}</td>
+                                    <td>{{ boisson.prix }} €</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        {#                            ----------------- -#}
+                        {% if listeJdf|length > 0 %}
+                            <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                <td><strong>Nos Jus</strong></td>
+                                <td></td>
 
-                        </tr>
-                        <tr>
-                            <th scope="row">Jus de pomme</th>
-                            <td>2,90€</td>
+                            </tr>
+                            {% for boisson in listeJdf %}
+                                <tr>
+                                    <td>{{ boisson.libelle }}</td>
+                                    <td>{{ boisson.prix }} €</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        {#                            ----------------- -#}
+                        {% if listeAutreSoft|length > 0 %}
+                            <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                <td><strong>Autres</strong></td>
+                                <td></td>
 
-
-                        </tr>
-                        <tr>
-                            <th scope="row">Eau du Loire</th>
-                            <td>3.00€</td>
-
-                        </tr>
+                            </tr>
+                            {% for boisson in listeAutreSoft %}
+                                <tr>
+                                    <td>{{ boisson.libelle }}</td>
+                                    <td>{{ boisson.prix }} €</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
                         </tbody>
                     </table>
                 </div>
@@ -157,7 +252,7 @@
                 <div class="mt-5">
                     <div class="mb-2"><i class="fa-solid fa-pizza-slice fs-1 text-primary"></i></div>
                     <h3 class="h4 mb-2">Miam</h3>
-                    <table class="table">
+                    <table class="table ">
                         <thead>
                         <tr>
                             <th scope="col">Nom</th>
@@ -191,83 +286,57 @@
             </div>
 
         </div>
-
+        <p class="text-center alert alert-warning"><i>Ces prix sont une indication et sont susceptible de changer et/ou
+                de ne pas être à jour.</i></p>
     </div>
     <div class="d-flex justify-content-center">
-    <a class="btn  btn-xl mt-5 btn-primary" href="#portfolio">Voir les photos</a>
+        <a class="btn  btn-xl mt-5 btn-primary" href="#galerie">Voir les photos</a>
     </div>
 </section>
-<!-- Portfolio-->
+<!-- galerie-->
 
-<div id="portfolio">
+<div id="galerie">
     <div class="container-fluid p-0 pt-5">
         <div class="container px-4 px-lg-5">
-        <h2 class="text-center text-white mt-0 pt-2">Galerie</h2>
-        <hr class="divider" />
-    </div>
-        <div class="row g-0 pt-3">
-            <div class="col-lg-4 col-sm-6 d-flex justify-content-center">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg" title="Project Name">
-                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/thumbnails/1.jpg') }}" alt="..." />
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6 d-flex justify-content-center">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg" title="Project Name">
-                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/thumbnails/2.jpg') }}" alt="..." />
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6 d-flex justify-content-center">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/3.jpg" title="Project Name">
-                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/thumbnails/3.jpg') }}" alt="..." />
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6 d-flex justify-content-center">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/4.jpg" title="Project Name">
-                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/thumbnails/4.jpg') }}" alt="..." />
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6 d-flex justify-content-center">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/5.jpg" title="Project Name">
-                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/thumbnails/5.jpg') }}" alt="..." />
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6 d-flex justify-content-center">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/6.jpg" title="Project Name">
-                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/thumbnails/6.jpg') }}" alt="..." />
-                    <div class="portfolio-box-caption p-3">
-                        <div class="project-category text-secondary">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-
+            <h2 class="text-center text-white mt-0 pt-2">Galerie</h2>
+            <hr class="divider"/>
         </div>
+{#        ----------------------------------------#}
+
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {%  for image in listeImages %}
+                <div class="carousel-item ">
+                    <div id="" class="row gx-4 gx-lg-5 justify-content-center m-5 carousel-img-container">
+                        <img src="{{ asset('uploads/galerie/'~image.lienImage) }}" alt=""  class="mh-50">
+                    </div>
+
+                </div>
+            {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+{#        ----------------------------------------#}
+
         <div class="d-flex justify-content-center ">
-        <a class="btn btn-light btn-xl mt-5 mb-5" href="#acces">Accès</a>
+            <a class="btn btn-light btn-xl mt-5 mb-5" href="#acces">Accès</a>
         </div>
     </div>
 
 </div>
+
+<script>
+    let items = document.getElementsByClassName(('carousel-item'))
+    items[0].classList.add('active')
+</script>
+
 
 
 <section class="page-section bg-white" id="acces">
@@ -275,22 +344,31 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8 text-center">
                 <h2 class="text-dark mt-0">Comment venir nous voir ?</h2>
-                <hr class="divider divider-light" />
+                <hr class="divider divider-light"/>
                 <p class="text-white-75 mb-4">Pas besoin de chaussures de rando ! </p>
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="mapouter "><div class="gmap_canvas d-flex justify-content-center">
-                            <iframe width="664" height="664" id="gmap_canvas" src="https://maps.google.com/maps?q=la%20roche%20foulques&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                    <div class="mapouter ">
+                        <div class="gmap_canvas d-flex justify-content-center">
+                            <iframe width="664" height="664" id="gmap_canvas"
+                                    src="https://maps.google.com/maps?q=la%20roche%20foulques&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
 
                             </iframe>
                             <br>
                             <style>
-                                .mapouter{position:relative;text-align:right;height:664px;width:853px;}
+                                .mapouter {
+                                    position: relative;
+                                    text-align: right;
+                                    height: 664px;
+                                    width: 853px;
+                                }
                             </style>
 
-                </div>
+                        </div>
                     </div>
                 </div>
-                <a class="btn btn-primary btn-xl mt-5" href="#contact" data-bs-toggle="modal" data-bs-target="#contactModal">Contact </a>
+                <a class="btn btn-primary btn-xl mt-5" href="#contact" data-bs-toggle="modal"
+                   data-bs-target="#contactModal">Contact </a>
             </div>
         </div>
     </div>
@@ -305,10 +383,10 @@
             </div>
             <div class="modal-body">
                 <p>
-                    <span><i class="fa-solid fa-at text-primary"></i></span>  empire-dagnet@rockfoulk.fr
+                    <span><i class="fa-solid fa-at text-primary"></i></span> empire-dagnet@rockfoulk.fr
                 </p>
                 <p>
-                    <span><i class="fa-solid fa-phone"></i></span>  <a href="tel:0000000000">06 34 90 94 24</a>
+                    <span><i class="fa-solid fa-phone"></i></span> <a href="tel:0000000000">06 34 90 94 24</a>
                 </p>
             </div>
 
@@ -371,84 +449,12 @@
         </div>
     </div>
 </div>
-<!-- Contact-->
-{#<section class="page-section" id="contact">#}
-{#    <div class="container px-4 px-lg-5">#}
-{#        <div class="row gx-4 gx-lg-5 justify-content-center">#}
-{#            <div class="col-lg-8 col-xl-6 text-center">#}
-{#                <h2 class="mt-0">Let's Get In Touch!</h2>#}
-{#                <hr class="divider" />#}
-{#                <p class="text-muted mb-5">Ready to start your next project with us? Send us a messages and we will get back to you as soon as possible!</p>#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">#}
-{#            <div class="col-lg-6">#}
-{#                <!-- * * * * * * * * * * * * * * *-->#}
-{#                <!-- * * SB Forms Contact Form * *-->#}
-{#                <!-- * * * * * * * * * * * * * * *-->#}
-{#                <!-- This form is pre-integrated with SB Forms.-->#}
-{#                <!-- To make this form functional, sign up at-->#}
-{#                <!-- https://startbootstrap.com/solution/contact-forms-->#}
-{#                <!-- to get an API token!-->#}
-{#                <form id="contactForm" data-sb-form-api-token="API_TOKEN">#}
-{#                    <!-- Name input-->#}
-{#                    <div class="form-floating mb-3">#}
-{#                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />#}
-{#                        <label for="name">Full name</label>#}
-{#                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>#}
-{#                    </div>#}
-{#                    <!-- Email address input-->#}
-{#                    <div class="form-floating mb-3">#}
-{#                        <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />#}
-{#                        <label for="email">Email address</label>#}
-{#                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>#}
-{#                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>#}
-{#                    </div>#}
-{#                    <!-- Phone number input-->#}
-{#                    <div class="form-floating mb-3">#}
-{#                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />#}
-{#                        <label for="phone">Phone number</label>#}
-{#                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>#}
-{#                    </div>#}
-{#                    <!-- Message input-->#}
-{#                    <div class="form-floating mb-3">#}
-{#                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>#}
-{#                        <label for="message">Message</label>#}
-{#                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>#}
-{#                    </div>#}
-{#                    <!-- Submit success message-->#}
-{#                    <!---->#}
-{#                    <!-- This is what your users will see when the form-->#}
-{#                    <!-- has successfully submitted-->#}
-{#                    <div class="d-none" id="submitSuccessMessage">#}
-{#                        <div class="text-center mb-3">#}
-{#                            <div class="fw-bolder">Form submission successful!</div>#}
-{#                            To activate this form, sign up at#}
-{#                            <br />#}
-{#                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <!-- Submit error message-->#}
-{#                    <!---->#}
-{#                    <!-- This is what your users will see when there is-->#}
-{#                    <!-- an error submitting the form-->#}
-{#                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>#}
-{#                    <!-- Submit Button-->#}
-{#                    <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Submit</button></div>#}
-{#                </form>#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="row gx-4 gx-lg-5 justify-content-center">#}
-{#            <div class="col-lg-4 text-center mb-5 mb-lg-0">#}
-{#                <i class="bi-phone fs-2 mb-3 text-muted"></i>#}
-{#                <div>+1 (555) 123-4567</div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#</section>#}
+
 <!-- Footer-->
 <footer class="bg-light py-5">
-    <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - Rock & Foulk</div></div>
+    <div class="container px-4 px-lg-5">
+        <div class="small text-center text-muted">Copyright &copy; 2022 - Rock & Foulk</div>
+    </div>
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -472,3 +478,31 @@
 </body>
 
 </html>
+
+
+{# <div id="galerie"> #}
+{#    <div class="container-fluid p-0 pt-5"> #}
+{#        <div class="container px-4 px-lg-5"> #}
+{#            <h2 class="text-center text-white mt-0 pt-2">Galerie</h2> #}
+{#            <hr class="divider"/> #}
+{#        </div> #}
+{#        <div class="row g-0 pt-3"> #}
+{#            {% for image in listeImages %} #}
+{#                <div class="col-lg-4 col-sm-6 d-flex justify-content-center"> #}
+{#                    <a class="galerie-box" href="assets/img/galerie/fullsize/1.jpg" title="Project Name"> #}
+{#                        <img class="img-fluid" src="{{ asset('uploads/galerie/'~image.lienImage) }}" alt="..."/> #}
+{#                        <div class="galerie-box-caption"> #}
+{#                            <div class="project-category text-white-50">Category</div> #}
+{#                            <div class="project-name">Project Name</div> #}
+{#                        </div> #}
+{#                    </a> #}
+{#                </div> #}
+{#            {% endfor %} #}
+
+{#        </div> #}
+{#        <div class="d-flex justify-content-center "> #}
+{#            <a class="btn btn-light btn-xl mt-5 mb-5" href="#acces">Accès</a> #}
+{#        </div> #}
+{#    </div> #}
+
+{# </div> #}

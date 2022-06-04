@@ -4,3 +4,28 @@ body{
     background: rgb(33,37,41);
     background: linear-gradient(0deg, rgba(33,37,41,1) 0%, rgba(184,64,69,1) 100%);
 }
+
+.accordion-button:not(.collapsed){
+    /*background: white !important;*/
+    border-color: black !important;
+    color: white !important;
+    box-shadow: none !important;
+}
+
+.accordion-button{
+    box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed)::after{
+    filter: invert(0.5);
+}
+
+
+
+.accordion-button.collapsed::after, .accordion-button::after{
+    filter: invert(1);
+}
+
+select {
+    background: white !important;
+}
