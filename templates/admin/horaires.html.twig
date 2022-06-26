@@ -1,0 +1,312 @@
+{% extends 'adminPanel.html.twig' %}
+{% block title %}
+    Horaires
+{% endblock %}
+{% block body %}
+    <div class="container mt-5">
+        <div class="row text-center">
+            {% for messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <div class="card bg-dark">
+            <div class="card-body text-white">
+                {{ form_start(horairesForm, {'attr': {'id': 'form_horaires'}}) }}
+                <div class="my-custom-class-for-errors">
+                    {{ form_errors(horairesForm) }}
+                </div>
+                <p class="alert alert-warning">Cochez cette case si la guinguette est fermée pour une durée indéterminée
+
+                </p>
+                {{ form_row(horairesForm.closedToday) }}
+
+                <div class="dayBox">
+                    <h4>Lundi</h4>
+                    <div class="">
+
+
+                        {{ form_row(horairesForm.lundi) }}
+
+
+
+                        {{ form_row(horairesForm.lundiFermeture) }}
+
+                    </div>
+                    {{ form_row(horairesForm.closedLundi) }}
+
+                </div>
+                <div class="dayBox">
+                    <h4>Mardi</h4>
+                    <div class="">
+
+                        <div class="">
+                            {{ form_row(horairesForm.mardi) }}
+                        </div>
+
+                        <div class="">
+                            {{ form_row(horairesForm.mardiFermeture) }}
+                        </div>
+                    </div>
+                    {{ form_row(horairesForm.closedMardi) }}
+
+                </div>
+                <div class="dayBox">
+                    <h4>Mercredi</h4>
+                    <div class="">
+
+                        <div class="">
+                            {{ form_row(horairesForm.mercredi) }}
+                        </div>
+
+                        <div class="">
+                            {{ form_row(horairesForm.mercrediFermeture) }}
+                        </div>
+                    </div>
+                    {{ form_row(horairesForm.closedMercredi) }}
+                </div>
+
+                <div class="dayBox">
+                    <h4>Jeudi</h4>
+                    <div class="">
+
+                        <div class="">
+                            {{ form_row(horairesForm.jeudi) }}
+                        </div>
+
+                        <div class="">
+                            {{ form_row(horairesForm.jeudiFermeture) }}
+                        </div>
+                    </div>
+                    {{ form_row(horairesForm.closedJeudi) }}
+                </div>
+
+                <div class="dayBox">
+                    <h4>Vendredi</h4>
+                    <div class="">
+
+                        <div class="">
+                            {{ form_row(horairesForm.vendredi) }}
+                        </div>
+
+                        <div class="">
+                            {{ form_row(horairesForm.vendrediFermeture) }}
+                        </div>
+                    </div>
+                    {{ form_row(horairesForm.closedVendredi) }}
+                </div>
+
+                <div class="dayBox">
+                    <h4>Samedi</h4>
+                    <div class="">
+
+                        <div class="">
+                            {{ form_row(horairesForm.samedi) }}
+                        </div>
+
+                        <div class="">
+                            {{ form_row(horairesForm.samediFermeture) }}
+                        </div>
+                    </div>
+                    {{ form_row(horairesForm.closedSamedi) }}
+                </div>
+
+                <div class="dayBox">
+                    <h4>Dimanche</h4>
+                    <div class="">
+
+                        <div class="">
+                            {{ form_row(horairesForm.dimanche) }}
+                        </div>
+
+                        <div class="">
+                            {{ form_row(horairesForm.dimancheFermeture) }}
+                        </div>
+                    </div>
+                    {{ form_row(horairesForm.closedDimanche) }}
+                </div>
+                {{ form_row(horairesForm.Valider) }}
+                {{ form_end(horairesForm) }}
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("navHoraires").classList.add('active')
+
+        let form = document.getElementById('form_horaires')
+        let allClosed = document.getElementById('horaires_form_closedToday')
+
+        //LUNDI
+        let ouvLundiH = document.getElementById('horaires_form_lundi_hour')
+        let ouvLundiM = document.getElementById('horaires_form_lundi_minute')
+        let fermLundiH = document.getElementById('horaires_form_lundiFermeture_hour')
+        let fermLundiM = document.getElementById('horaires_form_lundiFermeture_minute')
+        let lundiArray = [ouvLundiH, ouvLundiM, fermLundiH, fermLundiM]
+        //MARDI
+        let ouvMardiH = document.getElementById('horaires_form_mardi_hour')
+        let ouvMardiM = document.getElementById('horaires_form_mardi_minute')
+        let fermMardiH = document.getElementById('horaires_form_mardiFermeture_hour')
+        let fermMardiM = document.getElementById('horaires_form_mardiFermeture_minute')
+        let mardiArray = [ouvMardiH, ouvMardiM, fermMardiH, fermMardiM]
+        //MERCREDI
+        let ouvMercrediH = document.getElementById('horaires_form_mercredi_hour')
+        let ouvMercrediM = document.getElementById('horaires_form_mercredi_minute')
+        let fermMercrediH = document.getElementById('horaires_form_mercrediFermeture_hour')
+        let fermMercrediM = document.getElementById('horaires_form_mercrediFermeture_minute')
+        let mercrediArray = [ouvMercrediH, ouvMercrediM, fermMercrediH, fermMercrediM]
+        //JEUDI
+        let ouvJeudiH = document.getElementById('horaires_form_jeudi_hour')
+        let ouvJeudiM = document.getElementById('horaires_form_jeudi_minute')
+        let fermJeudiH = document.getElementById('horaires_form_jeudiFermeture_hour')
+        let fermJeudiM = document.getElementById('horaires_form_jeudiFermeture_minute')
+        let jeudiArray = [ouvJeudiH, ouvJeudiM, fermJeudiH, fermJeudiM]
+        //VENDREDI
+        let ouvVendrediH = document.getElementById('horaires_form_vendredi_hour')
+        let ouvVendrediM = document.getElementById('horaires_form_vendredi_minute')
+        let fermVendrediH = document.getElementById('horaires_form_vendrediFermeture_hour')
+        let fermVendrediM = document.getElementById('horaires_form_vendrediFermeture_minute')
+        let vendrediArray = [ouvVendrediH, ouvVendrediM, fermVendrediH, fermVendrediM]
+        //SAMEDI
+        let ouvSamediH = document.getElementById('horaires_form_samedi_hour')
+        let ouvSamediM = document.getElementById('horaires_form_samedi_minute')
+        let fermSamediH = document.getElementById('horaires_form_samediFermeture_hour')
+        let fermSamediM = document.getElementById('horaires_form_samediFermeture_minute')
+        let samediArray = [ouvSamediH, ouvSamediM, fermSamediH, fermSamediM]
+        //DIMANCHE
+        let ouvDimancheH = document.getElementById('horaires_form_dimanche_hour')
+        let ouvDimancheM = document.getElementById('horaires_form_dimanche_minute')
+        let fermDimancheH = document.getElementById('horaires_form_dimancheFermeture_hour')
+        let fermDimancheM = document.getElementById('horaires_form_dimancheFermeture_minute')
+        let dimancheArray = [ouvDimancheH, ouvDimancheM, fermDimancheH, fermDimancheM]
+
+
+        let lundiClosed = document.getElementById('horaires_form_closedLundi')
+        let mardiClosed = document.getElementById('horaires_form_closedMardi')
+        let mercrediClosed = document.getElementById('horaires_form_closedMercredi')
+        let jeudiClosed = document.getElementById('horaires_form_closedJeudi')
+        let vendrediClosed = document.getElementById('horaires_form_closedVendredi')
+        let samediClosed = document.getElementById('horaires_form_closedSamedi')
+        let dimancheClosed = document.getElementById('horaires_form_closedDimanche')
+
+        let daysArray = [lundiArray, mardiArray, mercrediArray, jeudiArray, vendrediArray, samediArray, dimancheArray]
+
+
+        checkStates()
+        form.addEventListener('change', (checkStates))
+
+        function checkStates() {
+            let boxes = document.getElementsByClassName('dayBox')
+            if (allClosed.checked == true) {
+
+                for (let i = 0; i < boxes.length; i++) {
+                    boxes[i].classList.add('d-none')
+                }
+
+            } else {
+                for (let i = 0; i < boxes.length; i++) {
+                    boxes[i].classList.remove('d-none')
+                }
+
+            }
+
+            if (lundiClosed.checked == true) {
+                lundiArray.forEach((element) => {
+                    element.disabled = true;
+
+                    element.value = "";
+                })
+            } else {
+                lundiArray.forEach((element) => {
+                    element.disabled = false;
+
+                })
+            }
+
+            if (mardiClosed.checked == true) {
+                mardiArray.forEach((element) => {
+                    element.disabled = true;
+
+                    element.value = "";
+                })
+            } else {
+                mardiArray.forEach((element) => {
+                    element.disabled = false;
+
+                })
+            }
+
+            if (mercrediClosed.checked == true) {
+                mercrediArray.forEach((element) => {
+                    element.disabled = true;
+
+                    element.value = "";
+                })
+            } else {
+                mercrediArray.forEach((element) => {
+                    element.disabled = false;
+
+                })
+            }
+
+            if (jeudiClosed.checked == true) {
+                jeudiArray.forEach((element) => {
+                    element.disabled = true;
+
+                    element.value = "";
+                })
+            } else {
+                jeudiArray.forEach((element) => {
+                    element.disabled = false;
+
+                })
+            }
+
+            if (vendrediClosed.checked == true) {
+                vendrediArray.forEach((element) => {
+                    element.disabled = true;
+
+                    element.value = "";
+                })
+            } else {
+                vendrediArray.forEach((element) => {
+                    element.disabled = false;
+
+                })
+            }
+
+            if (samediClosed.checked == true) {
+                samediArray.forEach((element) => {
+                    element.disabled = true;
+
+                    element.value = "";
+                })
+            } else {
+                samediArray.forEach((element) => {
+                    element.disabled = false;
+
+                })
+            }
+
+            if (dimancheClosed.checked == true) {
+                dimancheArray.forEach((element) => {
+                    element.disabled = true;
+
+                    element.value = "";
+                })
+            } else {
+                dimancheArray.forEach((element) => {
+                    element.disabled = false;
+
+                })
+            }
+
+        }
+
+
+    </script>
+{% endblock %}

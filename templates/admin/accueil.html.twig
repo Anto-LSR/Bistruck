@@ -1,62 +1,68 @@
 {% extends 'adminPanel.html.twig' %}
-
+{% block title %}
+    Accueil
+{% endblock %}
 {% block body %}
+
     <div class="container mt-5">
+        <div class="row text-center">
+            {% for messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
         <div class="card bg-dark">
             <div class="card-body">
 
 
-        <div class="text-white">
-            <h3>Edition de l'accueil</h3>
-            <p>C'est ici que vous pouvez éditer la première section du site avec le titre et la courte description.
-                <br>
+                <div class="text-white">
+                    <h3>Edition de l'accueil</h3>
+                    <p>C'est ici que vous pouvez éditer la première section du site avec le titre et la courte
+                        description.
+                        <br>
 
-            </p>
-            <div class="alert-success alert">Le mot-clé <strong>"Rock & Foulk"</strong> s'affichera automatiquement aux couleurs du site dans le titre.</div>
-        </div>
-        <form method="POST" class="text-white">
-            <div class="form-group ">
-                <label for="exampleFormControlInput1">Titre</label>
-                <input
-                        type="text"
-                        class="form-control"
-                        name="titreAccueil"
-                        placeholder="Le Bis'truck Rock & Foulk ouvre bientôt sa porte latérale !"
-                        value="{{ accueilTitre }}">
-            </div>
+                    </p>
+                    <div class="alert-success alert">Le mot-clé <strong>"Rock & Foulk"</strong> s'affichera
+                        automatiquement aux couleurs du site dans le titre.
+                    </div>
+                </div>
+                <form method="POST" class="text-white">
+                    <div class="form-group ">
+                        <label for="exampleFormControlInput1">Titre</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="titreAccueil"
+                                placeholder="Le Bis'truck Rock & Foulk ouvre bientôt sa porte latérale !"
+                                value="{{ accueilTitre }}">
+                    </div>
 
-            <div class="form-group ">
-                <label for="exampleFormControlInput1">Description</label>
-                <textarea
-                        name="descAccueil"
-                        id="" cols="30"
-                        rows="10"
-                        class="form-control"
-                >{{accueil.description}}
+                    <div class="form-group ">
+                        <label for="exampleFormControlInput1">Description</label>
+                        <textarea
+                                name="descAccueil"
+                                id="" cols="30"
+                                rows="10"
+                                class="form-control"
+                        >{{ accueil.description }}
                 </textarea>
-            </div>
-            <div class="d-flex justify-content-between mt-2">
-                <button class="btn btn-primary">Valider</button>
-                <button class="btn btn-secondary">Annuler</button>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <button class="btn btn-primary">Valider</button>
+                        <button class="btn btn-secondary">Annuler</button>
 
-            </div>
+                    </div>
 
-        </form>
+                </form>
             </div>
         </div>
     </div>
 
 
     <script>
-        tinymce.init({
-            selector: 'textarea#tiny'
-        });
-
-        // Prevent Bootstrap dialog from blocking focusin
-        document.addEventListener('focusin', (e) => {
-            if (e.target.closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
-                e.stopImmediatePropagation();
-            }
-        });
+        document.getElementById("navAccueil").classList.add('active')
     </script>
 {% endblock %}

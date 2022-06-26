@@ -11,6 +11,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+#map {
+    height: 560px;
+}
 
 header {
     min-height: 100vh;
@@ -26,6 +29,11 @@ section {
 
 #info_img_container img {
     border-radius: 80px;
+}
+
+.leaflet-routing-alt{
+
+    display: none;
 }
 
 
@@ -64,22 +72,18 @@ section {
     font-size: 22px;
 }
 
-.carousel-item.active {
-
-}
-
-.carousel-item {
-    text-align: center;
-}
-
-.carousel-img-container img{
-
-    max-height: 100%;
-    max-width: 100%;
-
+.image-modal-content {
+    min-width: 85vw;
 }
 
 
+#ferme {
+    color: #b84045;
+}
+
+.navbar-brand img {
+    height: 500px;
+}
 
 
 :root {

@@ -1,29 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
+    <meta name="description"
+          content="Guinguette Maine et loire, Guinguette La Roche Foulques, Foodtruck, Bis'truck, Rock and Foulk, guinguette, concert, musique, printemps, été"/>
     <meta name="author" content=""/>
-    <title>Bistruck</title>
+
+    <title>Rock & Foulk</title>
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/2d3b7349a5.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/cargo-truck.png') }}"/>
     <!-- Bootstrap Icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
           rel="stylesheet" type="text/css"/>
-    <!-- SimpleLightbox plugin CSS-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet"/>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+          integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+          crossorigin=""/>
+    <!-- JS Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+            integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+            crossorigin=""></script>
+
+    <!-- LEAFLET ROUTING MACHINE -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"/>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    {#    --------- -#}
 </head>
 <body id="page-top">
 <!-- Navigation-->
@@ -38,430 +52,40 @@
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item"><a class="nav-link" href="#about">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="#services">Carte</a></li>
-                <li class="nav-item"><a class="nav-link" href="#galerie">Galerie</a></li>
+
                 <li class="nav-item"><a class="nav-link" href="#acces">Accès</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact" data-bs-toggle="modal"
                                         data-bs-target="#contactModal">Contact </a></li>
-                <li class="nav-item"><a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#horairesModal">
-                        <span id="ouvert"> <strong> Actuellement ouvert </strong></span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#horairesModal" data-bs-toggle="modal"
+                                        data-bs-target="#horairesModal">
+                        Horaires </a></li>
+                {% if horaires.closedToday == 0 and not isClosed %}
+                    <li class="nav-item"><a class="nav-link" href="#horairesModal" data-bs-toggle="modal"
+                                            data-bs-target="#horairesModal">
+                            <span id="ouvert"> <strong> Actuellement ouvert </strong></span></a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="" data-bs-toggle="modal"
+                                            data-bs-target="#horairesModal">
+                            <span id="ferme"> <strong> Actuellement fermé </strong></span></a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
 </nav>
-<!-- Masthead-->
-<header class="masthead d-flex align-items-center">
+{% include 'main/accueil.html.twig' %}
+{% include 'main/infos.html.twig' %}
+{% include 'main/carte.html.twig' %}
+{% include 'main/acces.html.twig' %}
+{% include 'main/_contact.html.twig' %}
+{% include 'main/_horaires.html.twig' %}
 
-    <div class="container px-4 px-lg-5 h-100">
-        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center hero">
-            <div class="col-lg-8 align-self-end">
-                <h1 class="font-weight-bold">
-                    {{ accueil.titre|raw }}
-                </h1>
-                <hr class="divider"/>
-            </div>
-            <div class="col-lg-8 align-self-baseline">
-                <p class="text-white-75 mb-5">{{ accueil.description |raw }}</p>
-                <a class="btn btn-primary btn-xl get-started-btn" href="#about">Découvrir</a>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- About-->
-<section class="page-section bg-primary" id="about">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-lg-8 text-center">
-                <h2 class="text-white mt-0">{{ infos.titre }}</h2>
-                <hr class="divider divider-light"/>
-                <p class="text-white-75 mb-4">{{ infos.description }} </p>
-                <div id="info_img_container" class="row gx-4 gx-lg-5 justify-content-center">
-                    <img src="{{ asset('uploads/images/' ~ infos.lienImage) }}" alt="">
-                </div>
-                <a class="btn btn-light btn-xl mt-5" href="#services">Voir la carte</a>
-                <a class="btn btn-light btn-xl mt-5" href="#services" data-bs-toggle="modal"
-                   data-bs-target="#horairesModal">Voir les horaires</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Services-->
-
-<section class="page-section" id="services">
-    <div class="container px-4 px-lg-5">
-        <h2 class="text-center mt-0">Notre carte du moment</h2>
-        <hr class="divider"/>
-        <p class="text-white-75 mb-4 text-center">Le meilleur moyen de se détendre tout en<span
-                    class="rouge gras grand"> <br> soutenant les producteurs locaux ! 😉 </span></p>
-        <div class="row gx-4 gx-lg-5">
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="mt-5">
-                    <div class="mb-2"><i class="fa-solid fa-beer-mug-empty fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Bières</h3>
-                    <div class="table-responsive">
-                        <table class="table ">
-                            <thead>
-                            <tr>
-                                <th scope="col">Nom</th>
-                                <th scope="col">Prix</th>
-                                <th scope="col">Prix Pinte</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            {% if listeBiere|length > 0 %}
-                                <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
-                                    <td><strong>Nos bières</strong></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                {% for biere in listeBiere %}
-                                    <tr>
-                                        <td>{{ biere.libelle }}</td>
-                                        <td>{{ biere.prix }} €</td>
-                                        {% if biere.prixPinte is not null %}
-                                            <td>{{ biere.prixPinte }} €</td>
-                                        {% else %}
-                                            <td></td>
-                                        {% endif %}
-                                    </tr>
-                                {% endfor %}
-                            {% endif %}
-                            {#                            ---------------- -#}
-                            {% if listeVin|length > 0 %}
-                                <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
-                                    <td><strong>Nos vins et rosés</strong></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                {% for vin in listeVin %}
-                                    <tr>
-                                        <td>{{ vin.libelle }}</td>
-                                        <td>{{ vin.prix }} €</td>
-                                        {% if vin.prixPinte is not null %}
-                                            <td>{{ vin.prixPinte }} €</td>
-                                        {% else %}
-                                            <td></td>
-                                        {% endif %}
-                                    </tr>
-                                {% endfor %}
-                            {% endif %}
-                            {#                            --------------------- -#}
-                            {% if listeSpiritueux|length > 0 %}
-                                <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
-                                    <td><strong>Nos spiritueux</strong></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                {% for alcool in listeSpiritueux %}
-                                    <tr>
-                                        <td>{{ alcool.libelle }}</td>
-                                        <td>{{ alcool.prix }} €</td>
-                                        {% if alcool.prixPinte is not null %}
-                                            <td>{{ alcool.prixPinte }} €</td>
-                                        {% else %}
-                                            <td></td>
-                                        {% endif %}
-                                    </tr>
-                                {% endfor %}
-                            {% endif %}
-                            {#                            ----------------- -#}
-                            {% if listeSpiritueux|length > 0 %}
-                                <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
-                                    <td><strong>Nos cidres</strong></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                {% for alcool in listeCidre %}
-                                    <tr>
-                                        <td>{{ alcool.libelle }}</td>
-                                        <td>{{ alcool.prix }} €</td>
-                                        {% if alcool.prixPinte is not null %}
-                                            <td>{{ alcool.prixPinte }} €</td>
-                                        {% else %}
-                                            <td></td>
-                                        {% endif %}
-                                    </tr>
-                                {% endfor %}
-                            {% endif %}
-                            {#                            -------------------- -#}
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="mt-5">
-                    <div class="mb-2"><i class="fa-solid fa-glass-water fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Sans Alcool</h3>
-                    <table class="table ">
-                        <thead>
-                        <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Tarif</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {#                            ----------------- -#}
-                        {% if listeSoda|length > 0 %}
-                            <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
-                                <td><strong>Nos Sodas</strong></td>
-                                <td></td>
-
-                            </tr>
-                            {% for boisson in listeSoda %}
-                                <tr>
-                                    <td>{{ boisson.libelle }}</td>
-                                    <td>{{ boisson.prix }} €</td>
-                                </tr>
-                            {% endfor %}
-                        {% endif %}
-                        {#                            ----------------- -#}
-                        {% if listeJdf|length > 0 %}
-                            <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
-                                <td><strong>Nos Jus</strong></td>
-                                <td></td>
-
-                            </tr>
-                            {% for boisson in listeJdf %}
-                                <tr>
-                                    <td>{{ boisson.libelle }}</td>
-                                    <td>{{ boisson.prix }} €</td>
-                                </tr>
-                            {% endfor %}
-                        {% endif %}
-                        {#                            ----------------- -#}
-                        {% if listeAutreSoft|length > 0 %}
-                            <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
-                                <td><strong>Autres</strong></td>
-                                <td></td>
-
-                            </tr>
-                            {% for boisson in listeAutreSoft %}
-                                <tr>
-                                    <td>{{ boisson.libelle }}</td>
-                                    <td>{{ boisson.prix }} €</td>
-                                </tr>
-                            {% endfor %}
-                        {% endif %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="mt-5">
-                    <div class="mb-2"><i class="fa-solid fa-pizza-slice fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Miam</h3>
-                    <table class="table ">
-                        <thead>
-                        <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Tarif</th>
-                            <th scope="col">Végétarien</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">Assiette de fromages</th>
-                            <td>7.00€</td>
-                            <td>✔</td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">Plateau de charcuterie</th>
-                            <td>9.00€</td>
-                            <td></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">Frites</th>
-                            <td>3.00€</td>
-                            <td>✔</td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-
-        </div>
-        <p class="text-center alert alert-warning"><i>Ces prix sont une indication et sont susceptible de changer et/ou
-                de ne pas être à jour.</i></p>
-    </div>
-    <div class="d-flex justify-content-center">
-        <a class="btn  btn-xl mt-5 btn-primary" href="#galerie">Voir les photos</a>
-    </div>
-</section>
-<!-- galerie-->
-
-<div id="galerie">
-    <div class="container-fluid p-0 pt-5">
-        <div class="container px-4 px-lg-5">
-            <h2 class="text-center text-white mt-0 pt-2">Galerie</h2>
-            <hr class="divider"/>
-        </div>
-{#        ----------------------------------------#}
-
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                {%  for image in listeImages %}
-                <div class="carousel-item ">
-                    <div id="" class="row gx-4 gx-lg-5 justify-content-center m-5 carousel-img-container">
-                        <img src="{{ asset('uploads/galerie/'~image.lienImage) }}" alt=""  class="mh-50">
-                    </div>
-
-                </div>
-            {% endfor %}
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-{#        ----------------------------------------#}
-
-        <div class="d-flex justify-content-center ">
-            <a class="btn btn-light btn-xl mt-5 mb-5" href="#acces">Accès</a>
-        </div>
-    </div>
-
-</div>
-
-<script>
-    let items = document.getElementsByClassName(('carousel-item'))
-    items[0].classList.add('active')
-</script>
-
-
-
-<section class="page-section bg-white" id="acces">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-lg-8 text-center">
-                <h2 class="text-dark mt-0">Comment venir nous voir ?</h2>
-                <hr class="divider divider-light"/>
-                <p class="text-white-75 mb-4">Pas besoin de chaussures de rando ! </p>
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="mapouter ">
-                        <div class="gmap_canvas d-flex justify-content-center">
-                            <iframe width="664" height="664" id="gmap_canvas"
-                                    src="https://maps.google.com/maps?q=la%20roche%20foulques&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-
-                            </iframe>
-                            <br>
-                            <style>
-                                .mapouter {
-                                    position: relative;
-                                    text-align: right;
-                                    height: 664px;
-                                    width: 853px;
-                                }
-                            </style>
-
-                        </div>
-                    </div>
-                </div>
-                <a class="btn btn-primary btn-xl mt-5" href="#contact" data-bs-toggle="modal"
-                   data-bs-target="#contactModal">Contact </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nous contacter</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    <span><i class="fa-solid fa-at text-primary"></i></span> empire-dagnet@rockfoulk.fr
-                </p>
-                <p>
-                    <span><i class="fa-solid fa-phone"></i></span> <a href="tel:0000000000">06 34 90 94 24</a>
-                </p>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="horairesModal" tabindex="-1" aria-labelledby="horairesModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Horaires d'ouverture cette semaine </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <table class="table table-striped">
-                    <thead>
-
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">Lundi</th>
-                        <td>17h00 - 22h00</td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">Mardi</th>
-                        <td>17h00 - 22h00</td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">Mercredi</th>
-                        <td>17h00 - 22h00</td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">Jeudi</th>
-                        <td>17h00 - 22h00</td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">Vendredi</th>
-                        <td>17h00 - 22h00</td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">Samedi</th>
-                        <td>12h00 - 22h00</td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">Dimanche</th>
-                        <td>12h00 - 22h00</td>
-
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 <!-- Footer-->
-<footer class="bg-light py-5">
-    <div class="container px-4 px-lg-5">
-        <div class="small text-center text-muted">Copyright &copy; 2022 - Rock & Foulk</div>
+<footer class="bg-dark  py-5">
+    <div class="container px-4 px-lg-5 ">
+        <div class="small text-center text-white">Copyright &copy; 2022 - Rock & Foulk</div>
     </div>
 </footer>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- SimpleLightbox plugin JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-<!-- Core theme JS-->
-<script src="{{ asset('js/scripts.js') }}"></script>
 
 
 <style>
@@ -470,39 +94,12 @@
         background-image: url({{ asset('assets/img/bg-main-opacity.png') }});
     }
 </style>
-{% block body %}
-
-{% endblock %}
 
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="{{ asset('js/scripts.js') }}"></script>
 </body>
-
 </html>
 
 
-{# <div id="galerie"> #}
-{#    <div class="container-fluid p-0 pt-5"> #}
-{#        <div class="container px-4 px-lg-5"> #}
-{#            <h2 class="text-center text-white mt-0 pt-2">Galerie</h2> #}
-{#            <hr class="divider"/> #}
-{#        </div> #}
-{#        <div class="row g-0 pt-3"> #}
-{#            {% for image in listeImages %} #}
-{#                <div class="col-lg-4 col-sm-6 d-flex justify-content-center"> #}
-{#                    <a class="galerie-box" href="assets/img/galerie/fullsize/1.jpg" title="Project Name"> #}
-{#                        <img class="img-fluid" src="{{ asset('uploads/galerie/'~image.lienImage) }}" alt="..."/> #}
-{#                        <div class="galerie-box-caption"> #}
-{#                            <div class="project-category text-white-50">Category</div> #}
-{#                            <div class="project-name">Project Name</div> #}
-{#                        </div> #}
-{#                    </a> #}
-{#                </div> #}
-{#            {% endfor %} #}
-
-{#        </div> #}
-{#        <div class="d-flex justify-content-center "> #}
-{#            <a class="btn btn-light btn-xl mt-5 mb-5" href="#acces">Accès</a> #}
-{#        </div> #}
-{#    </div> #}
-
-{# </div> #}

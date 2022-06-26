@@ -1,8 +1,18 @@
 {% extends 'adminPanel.html.twig' %}
-
+{% block title %}
+    Carte
+{% endblock %}
 {% block body %}
 
-
+    <div class="row text-center">
+        {% for messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
 
     <div class="accordion m-2" id="accordionExample">
         <div class="accordion-item">
@@ -170,10 +180,9 @@
         }
         if (params == "plat") {
             document.getElementById('collapseFour').classList.add('show')
-
-
         }
 
+        document.getElementById("navCarte").classList.add('active')
     </script>
 
 {% endblock %}

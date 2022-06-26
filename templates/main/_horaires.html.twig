@@ -1,0 +1,127 @@
+<!-- ------------------------MODAL HORAIRES ------------------------------>
+<div class="modal fade" id="horairesModal" tabindex="-1" aria-labelledby="horairesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Horaires d'ouverture cette semaine </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                    <td>Jour</td>
+                    <td>Ouverture</td>
+                    <td>Fermeture</td>
+                    </thead>
+                    <tbody>
+                    {% if horaires.closedToday == 0 %}
+                        <tr>
+                            <th scope="row">Lundi</th>
+                            {% if horaires.closedLundi == 0 %}
+                                <td>{{ horaires.lundi|date('H:i') }}</td>
+                                <td>{{ horaires.lundiFermeture|date('H:i') }}</td>
+                            {% else %}
+                                <td>Fermé</td>
+                                <td></td>
+                            {% endif %}
+
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Mardi</th>
+                            {% if horaires.closedMardi == 0 %}
+                                <td>{{ horaires.mardi|date('H:i') }}</td>
+                                <td>{{ horaires.mardiFermeture|date('H:i') }}</td>
+                            {% else %}
+                                <td>Fermé</td>
+                                <td></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row">Mercredi</th>
+                            {% if horaires.closedMercredi == 0 %}
+                                <td>{{ horaires.mercredi|date('H:i') }}</td>
+                                <td>{{ horaires.mercrediFermeture|date('H:i') }}</td>
+                            {% else %}
+                                <td>Fermé</td>
+                                <td></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row">Jeudi</th>
+                            {% if horaires.closedJeudi == 0 %}
+                                <td>{{ horaires.jeudi|date('H:i') }}</td>
+                                <td>{{ horaires.jeudiFermeture|date('H:i') }}</td>
+                            {% else %}
+                                <td>Fermé</td>
+                                <td></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row">Vendredi</th>
+                            {% if horaires.closedVendredi == 0 %}
+                                <td>{{ horaires.vendredi|date('H:i') }}</td>
+                                <td>{{ horaires.jeudiFermeture|date('H:i') }}</td>
+                            {% else %}
+                                <td>Fermé</td>
+                                <td></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row">Samedi</th>
+                            {% if horaires.closedSamedi == 0 %}
+                                <td>{{ horaires.samedi|date('H:i') }}</td>
+                                <td>{{ horaires.samediFermeture|date('H:i') }}</td>
+                            {% else %}
+                                <td>Fermé</td>
+                                <td></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row">Dimanche</th>
+                            {% if horaires.closedDimanche == 0 %}
+                                <td>{{ horaires.dimanche|date('H:i') }}</td>
+                                <td>{{ horaires.dimancheFermeture|date('H:i') }}</td>
+                            {% else %}
+                                <td>Fermé</td>
+                                <td></td>
+                            {% endif %}
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <th scope="row">Lundi</th>
+                            <td><span class="closed">Fermé</span></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Mardi</th>
+                            <td><span class="closed">Fermé</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mercredi</th>
+                            <td><span class="closed">Fermé</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Jeudi</th>
+                            <td><span class="closed">Fermé</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Vendredi</th>
+                            <td><span class="closed">Fermé</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Samedi</th>
+                            <td><span class="closed">Fermé</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Dimanche</th>
+                            <td><span class="closed">Fermé</span></td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

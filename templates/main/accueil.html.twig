@@ -1,0 +1,18 @@
+<header class="masthead d-flex align-items-center">
+
+    <div class="container px-4 px-lg-5 h-100">
+        <img src="{{ asset('assets/img/logo.png') }}" alt="" style="height: 24vh;">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center hero">
+            <div class="col-lg-8 align-self-end">
+                <h1 class="font-weight-bold">
+                    {{ accueil.titre|raw }}
+                </h1>
+                <hr class="divider"/>
+            </div>
+            <div class="col-lg-8 align-self-baseline">
+                <p class="text-white-75 mb-5">{{ accueil.description |raw }}</p>
+                <a class="btn btn-primary btn-xl get-started-btn" href="#about">Découvrir</a>
+            </div>
+        </div>
+    </div>
+</header>

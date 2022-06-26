@@ -1,7 +1,19 @@
 {% extends 'adminPanel.html.twig' %}
-
+{% block title %}
+    Infos
+{% endblock %}
 {% block body %}
+
     <div class="container mt-5">
+        <div class="row text-center">
+            {% for messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
         <div class="card bg-dark">
             <div class="card-body text-white">
 
@@ -23,7 +35,7 @@
         </div>
 
     </div>
-    <div class="imageActuelle w-100 p-5 bg-dark mt-5">
+    <div class="imageActuelle w-100 p-5  mt-5">
         <h3 class="text-white">Image actuellement sur le site : </h3>
         <div class="w-100 d-flex justify-content-center">
             <img src="{{ asset('uploads/images/' ~ infos.lienImage) }}" alt=""
@@ -31,5 +43,7 @@
         </div>
     </div>
 
-
+    <script>
+        document.getElementById("navInfos").classList.add('active')
+    </script>
 {% endblock %}

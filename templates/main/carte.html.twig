@@ -1,0 +1,201 @@
+ <section class="page-section" id="services">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Notre carte du moment</h2>
+            <hr class="divider"/>
+            <p class="text-white-75 mb-4 text-center">Le meilleur moyen de se détendre tout en<span
+                        class="rouge gras grand"> <br> soutenant les producteurs locaux ! 😉 </span></p>
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="mt-5">
+                        <div class="mb-2"><i class="fa-solid fa-beer-mug-empty fs-1 text-primary"></i></div>
+                        <h3 class="h4 mb-2">Alcools</h3>
+                        <div class="table-responsive">
+                            <table class="table ">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prix</th>
+                                    <th scope="col">Prix Pinte</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% if listeBiere|length > 0 %}
+                                    <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                        <td><strong>Nos bières</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    {% for biere in listeBiere %}
+                                        <tr>
+                                            <td>{{ biere.libelle }}</td>
+                                            <td>{{ biere.prix }} €</td>
+                                            {% if biere.prixPinte is not null %}
+                                                <td>{{ biere.prixPinte }} €</td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                                {#                            ---------------- -#}
+                                {% if listeVin|length > 0 %}
+                                    <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                        <td><strong>Nos vins et rosés</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    {% for vin in listeVin %}
+                                        <tr>
+                                            <td>{{ vin.libelle }}</td>
+                                            <td>{{ vin.prix }} €</td>
+                                            {% if vin.prixPinte is not null %}
+                                                <td>{{ vin.prixPinte }} €</td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                                {#                            --------------------- -#}
+                                {% if listeSpiritueux|length > 0 %}
+                                    <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                        <td><strong>Nos spiritueux</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    {% for alcool in listeSpiritueux %}
+                                        <tr>
+                                            <td>{{ alcool.libelle }}</td>
+                                            <td>{{ alcool.prix }} €</td>
+                                            {% if alcool.prixPinte is not null %}
+                                                <td>{{ alcool.prixPinte }} €</td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                                {#                            ----------------- -#}
+                                {% if listeSpiritueux|length > 0 %}
+                                    <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                        <td><strong>Nos cidres</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    {% for alcool in listeCidre %}
+                                        <tr>
+                                            <td>{{ alcool.libelle }}</td>
+                                            <td>{{ alcool.prix }} €</td>
+                                            {% if alcool.prixPinte is not null %}
+                                                <td>{{ alcool.prixPinte }} €</td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                                {#                            -------------------- -#}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="mt-5">
+                        <div class="mb-2"><i class="fa-solid fa-glass-water fs-1 text-primary"></i></div>
+                        <h3 class="h4 mb-2">Sans Alcool</h3>
+                        <table class="table ">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Tarif</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {#                            ----------------- -#}
+                            {% if listeSoda|length > 0 %}
+                                <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                    <td><strong>Nos Sodas</strong></td>
+                                    <td></td>
+
+                                </tr>
+                                {% for boisson in listeSoda %}
+                                    <tr>
+                                        <td>{{ boisson.libelle }}</td>
+                                        <td>{{ boisson.prix }} €</td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            {#                            ----------------- -#}
+                            {% if listeJdf|length > 0 %}
+                                <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                    <td><strong>Nos Jus</strong></td>
+                                    <td></td>
+
+                                </tr>
+                                {% for boisson in listeJdf %}
+                                    <tr>
+                                        <td>{{ boisson.libelle }}</td>
+                                        <td>{{ boisson.prix }} €</td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            {#                            ----------------- -#}
+                            {% if listeAutreSoft|length > 0 %}
+                                <tr class="bg-red text-white  border-bottom border-bottom-5 border-dark">
+                                    <td><strong>Autres</strong></td>
+                                    <td></td>
+
+                                </tr>
+                                {% for boisson in listeAutreSoft %}
+                                    <tr>
+                                        <td>{{ boisson.libelle }}</td>
+                                        <td>{{ boisson.prix }} €</td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="mt-5">
+                        <div class="mb-2"><i class="fa-solid fa-pizza-slice fs-1 text-primary"></i></div>
+                        <h3 class="h4 mb-2">Miam</h3>
+                        <table class="table ">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Tarif</th>
+                                <th scope="col">Végétarien</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for plat in listePlat %}
+                                <tr>
+                                    <td>{{ plat.libelle }}</td>
+                                    <td>{{ plat.prix }} €</td>
+                                    {% if plat.isVegetarien == true %}
+                                        <td>✔</td>
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+            <p class="text-center alert alert-warning"><i>Ces prix sont une indication et sont susceptible de changer et/ou
+                    de ne pas être à jour.</i></p>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a class="btn  btn-xl mt-5 btn-primary" target="_blank"
+               href="https://www.facebook.com/Rock-Foulk-102687972375622/photos/">Voir les photos</a>
+        </div>
+    </section>

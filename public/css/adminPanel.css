@@ -1,8 +1,13 @@
 body{
     /*background: #b84045;*/
     height: 100vh;
-    background: rgb(33,37,41);
-    background: linear-gradient(0deg, rgba(33,37,41,1) 0%, rgba(184,64,69,1) 100%);
+    /*background: rgb(33,37,41);*/
+    /*background: linear-gradient(0deg, rgba(33,37,41,1) 0%, rgba(184,64,69,1) 100%);*/
+
+    background-image: url('/assets/img/bg-main-opacity.png');
+    background-size: cover;
+
+
 }
 
 .accordion-button:not(.collapsed){
